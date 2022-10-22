@@ -41,6 +41,12 @@ class TreeNode:
     def get_isLeaf(self):
         return self.isLeaf
 
+    def __repr__(self, level=0):
+        ret = "\t"*level+repr(self.label)+"\n"
+        for child in self.children:
+            ret += child.__repr__(level+1)
+        return ret
+
         
 class ID3:
     ## constructor
@@ -249,5 +255,5 @@ def dt_car_data(self, max_depth = 2):
 
 
 ## actually running the functions
-print(dt_car_data(sys.argv[1]))
+print(dt_car_data(2).__repr__()) # sys.argv[1]
 print('finished')
